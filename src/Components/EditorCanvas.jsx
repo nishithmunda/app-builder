@@ -47,18 +47,23 @@ export const EditorCanvas = (props) => {
   };
 
   function drawBoard(p, bw, bh) {
+    let canvasContainer = document.getElementById("canvas_container");
+    let parentHeight = canvasContainer.offsetHeight;
+    let parentWidth = canvasContainer.offsetWidth;
     let canvas = document.getElementById("canvas");
+    canvas.width = parentWidth-40;
+    canvas.height = parentHeight-40;
     let context = canvas.getContext("2d");
-    for (let x = 0; x <= bw; x += 40) {
+    for (let x = 0; x <= parentWidth; x += 25) {
       context.moveTo(0.5 + x + p, p);
-      context.lineTo(0.5 + x + p, bh + p);
+      context.lineTo(0.5 + x + p, parentHeight + p);
     }
 
-    for (let x = 0; x <= bh; x += 40) {
+    for (let x = 0; x <= parentHeight; x += 25) {
       context.moveTo(p, 0.5 + x + p);
-      context.lineTo(bw + p, 0.5 + x + p);
+      context.lineTo(parentWidth + p, 0.5 + x + p);
     }
-    context.strokeStyle = "grey";
+    context.strokeStyle = "#e9eff2";
     context.stroke();
   }
 
@@ -76,8 +81,8 @@ export const EditorCanvas = (props) => {
         <h1>Design Board</h1>
       </div>
 
-      <div className="canvas__screen__editor" ref={drop}>
-        <canvas id="canvas" width="420px" height="420px"></canvas>
+      <div id="canvas_container" className="canvas__screen__editor" ref={drop}>
+        <canvas id="canvas"></canvas>
         {state?.canvasItems?.length > 0 &&
           state?.canvasItems.map((item) => {
             return (

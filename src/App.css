@@ -3,7 +3,7 @@
 }
 
 body {
-  margin: unset;
+  margin:0;
 }
 p {
   margin: 0;
@@ -29,4 +29,5 @@ html {
 }
 
 canvas {
+  display:block;
 }
