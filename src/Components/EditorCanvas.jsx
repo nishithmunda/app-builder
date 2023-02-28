@@ -46,13 +46,13 @@ export const EditorCanvas = (props) => {
     });
   };
 
-  function drawBoard(p, bw, bh) {
+  function drawBoard(p) {
     let canvasContainer = document.getElementById("canvas_container");
     let parentHeight = canvasContainer.offsetHeight;
     let parentWidth = canvasContainer.offsetWidth;
     let canvas = document.getElementById("canvas");
-    canvas.width = parentWidth-40;
-    canvas.height = parentHeight-40;
+    canvas.width = parentWidth - 40;
+    canvas.height = parentHeight - 40;
     let context = canvas.getContext("2d");
     for (let x = 0; x <= parentWidth; x += 25) {
       context.moveTo(0.5 + x + p, p);
