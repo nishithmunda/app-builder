@@ -7,7 +7,6 @@ import DeleteIcon from "@mui/icons-material/Delete";
 
 export const ElementWrapper = ({ childComp, type, properties, eleId_prop }) => {
   const [state, dispatch] = useStateValue();
-  const isHover = useRef(false);
   const eleId = useId();
   const time = new Date().valueOf();
   let uniqueId = eleId_prop || `${eleId}-${type}-${time}`;
@@ -25,8 +24,11 @@ export const ElementWrapper = ({ childComp, type, properties, eleId_prop }) => {
       className="element__box"
       style={{ top: properties?.top, left: properties?.left }}
     >
-      <DeleteIcon className='delete__icon' onClick={() => handleDeleteItem(eleId_prop)} />
       {childComp(properties)}
+      <DeleteIcon
+        className="delete__icon"
+        onClick={() => handleDeleteItem(eleId_prop)}
+      />
     </div>
   );
 };

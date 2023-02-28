@@ -36,8 +36,9 @@ const reducer = (state, action) => {
         })
         .filter((notUndefined) => notUndefined !== undefined);
 
-      console.log({ updatedState });
+      //Update in local Storage  
       localStorage.setItem("state", JSON.stringify(updatedState));
+      
       return {
         ...state,
         canvasItems: updatedItem,

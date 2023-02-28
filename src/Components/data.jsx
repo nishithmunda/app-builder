@@ -14,7 +14,7 @@ export const componentList = [
     type: "btn_id",
     name: "Button",
     component: (properties) => (
-      <Button variant={properties?.varient}>Outlined</Button>
+      <Button variant={properties?.varient||'outlined'}>Outlined</Button>
     ),
     supportText: "Trigger actions like run queries, export data etc.",
     icon: <SmartButtonIcon />,
@@ -35,7 +35,6 @@ export const componentList = [
         labelId="demo-simple-select-label"
         id="demo-simple-select"
         label="Age"
-        onChange={(e) => console.log(e)}
         onClick={(e) => {
           e.stopPropagation();
           e.preventDefault();

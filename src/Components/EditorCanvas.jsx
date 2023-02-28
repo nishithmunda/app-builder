@@ -47,22 +47,23 @@ export const EditorCanvas = (props) => {
   };
 
   function drawBoard(p, bw, bh) {
-    var canvas = document.getElementById("canvas");
-    var context = canvas.getContext("2d");
-    for (var x = 0; x <= bw; x += 40) {
+    let canvas = document.getElementById("canvas");
+    let context = canvas.getContext("2d");
+    for (let x = 0; x <= bw; x += 40) {
       context.moveTo(0.5 + x + p, p);
       context.lineTo(0.5 + x + p, bh + p);
     }
 
-    for (var x = 0; x <= bh; x += 40) {
+    for (let x = 0; x <= bh; x += 40) {
       context.moveTo(p, 0.5 + x + p);
       context.lineTo(bw + p, 0.5 + x + p);
     }
-    context.strokeStyle = "black";
+    context.strokeStyle = "grey";
     context.stroke();
   }
+
   useEffect(() => {
-    // drawBoard(10, 400, 400);
+    drawBoard(10, 400, 400);
     handleAddFromLocalStorage();
   }, []);
 
@@ -71,12 +72,12 @@ export const EditorCanvas = (props) => {
       className="canvas__screen"
       style={{ background: state?.canvasItems?.length === 0 && "#e9eef2" }}
     >
-      {/* <canvas id="canvas" width="420px" height="420px"></canvas> */}
       <div className="canvas__screen__header">
         <h1>Design Board</h1>
       </div>
 
       <div className="canvas__screen__editor" ref={drop}>
+        <canvas id="canvas" width="420px" height="420px"></canvas>
         {state?.canvasItems?.length > 0 &&
           state?.canvasItems.map((item) => {
             return (
