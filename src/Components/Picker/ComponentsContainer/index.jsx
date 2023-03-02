@@ -1,6 +1,6 @@
 import { useDrag } from "react-dnd";
 
-export const ComponentWrapper = ({ details }) => {
+export const ComponentContainer = ({ details }) => {
   const [{ isDragging }, drag] = useDrag({
     type: "abc",
     item: { type: details?.type },

@@ -1,0 +1,38 @@
+.child__wrapper {
+  display: inline-flex;
+}
+
+.element__box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: move;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.element__box:hover {
+  border: 1px solid green;
+  background-color: rgba(0, 128, 0, 0.116);
+}
+
+.element__box:hover > .delete__icon {
+  display: flex !important;
+  margin-left: auto;
+}
+.element__box:hover > .move__icon {
+  display: flex !important;
+}
+
+.delete__icon {
+  display: none !important;
+  position: absolute;
+  right: 0;
+  bottom: -25px;
+}
+
+.move__icon {
+  display: none !important;
+}

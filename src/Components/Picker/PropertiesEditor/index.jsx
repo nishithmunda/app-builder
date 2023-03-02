@@ -1,6 +1,6 @@
 import TextField from "@mui/material/TextField";
-import { useStateValue } from "../../ContextAPI/StateProvider";
-import { actionTypes } from "../../ContextAPI/reducer";
+import { useStateValue } from "../../../ContextAPI/StateProvider";
+import { actionTypes } from "../../../ContextAPI/reducer";
 import "./style.css";
 
 export function PropertiesEditor() {

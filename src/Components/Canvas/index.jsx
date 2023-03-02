@@ -1,9 +1,11 @@
-import { useState,useId, useEffect, useRef } from "react";
+import { useState, useId, useEffect, useRef } from "react";
 import { useDrop } from "react-dnd";
-import { componentList } from "./data";
-import { ElementWrapper } from "./ElementWrapper";
-import { actionTypes } from "../ContextAPI/reducer";
-import { useStateValue } from "../ContextAPI/StateProvider";
+import { componentList } from "../Data/ComponentList";
+import { ElementWrapper } from "../ElementWrapper";
+import { actionTypes } from "../../ContextAPI/reducer";
+import { useStateValue } from "../../ContextAPI/StateProvider";
+import { Dragger } from "../CommonComponents/Draggable";
+import './style.css'
 
 export const EditorCanvas = (props) => {
   const [state, dispatch] = useStateValue();
@@ -26,7 +28,11 @@ export const EditorCanvas = (props) => {
       payload: {
         ...item?.[0],
         eleId: `${eleId}-${item?.[0]?.type}-${time}`,
-        properties: { varient: "outlined" },
+        properties: {
+          varient: "outlined",
+          lastX: 0,
+          lastY: 0,
+        },
       },
     });
   };
@@ -41,8 +47,8 @@ export const EditorCanvas = (props) => {
         ...elementItem[0],
         eleId: item?.eleId,
         properties: {
-          top: item?.top || 0,
-          left: item?.left || 0,
+          lastX: item?.lastX || 0,
+          lastY: item?.lastY || 0,
         },
       };
     });
@@ -74,7 +80,7 @@ export const EditorCanvas = (props) => {
   }
 
   useEffect(() => {
-    drawBoard(10);
+    // drawBoard(10);
     handleAddFromLocalStorage();
   }, []);
 
@@ -88,8 +94,8 @@ export const EditorCanvas = (props) => {
       </div>
 
       <div id="canvas_container" className="canvas__screen__editor" ref={drop}>
-        <canvas id="canvas"></canvas>
-        {state?.canvasItems?.length > 0 &&
+        {/* <canvas id="canvas"></canvas> */}
+        {/* {state?.canvasItems?.length > 0 &&
           state?.canvasItems.map((item) => {
             return (
               <>
@@ -102,8 +108,19 @@ export const EditorCanvas = (props) => {
                 />
               </>
             );
+          })} */}
+        {state?.canvasItems?.length > 0 &&
+          state?.canvasItems.map((item) => {
+            return (
+              <Dragger
+                type={item?.type}
+                eleId_prop={item?.eleId}
+                childComponent={item?.component}
+                properties={item?.properties}
+                item={item}
+              />
+            );
           })}
-
         {state?.canvasItems?.length == 0 && (
           <h1 className="canvas__empty__screen">
             Drag & drop components here.

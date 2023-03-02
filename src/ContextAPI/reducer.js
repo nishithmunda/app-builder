@@ -1,6 +1,6 @@
 export const initialState = {
   canvasItems: [],
-  activeElement: {},
+  activeElement: null,
 };
 
 export const actionTypes = {
@@ -36,10 +36,10 @@ const reducer = (state, action) => {
           return element;
         }
       });
-    return {
-      ...state,
-      canvasItems: filterElement,
-    };
+      return {
+        ...state,
+        canvasItems: filterElement,
+      };
     case actionTypes.REMOVE_ELEMENT:
       const updatedItem = [];
       const updatedState = state?.canvasItems
@@ -48,9 +48,9 @@ const reducer = (state, action) => {
             updatedItem.push(val);
             return {
               eleId: val?.eleId,
-              top: val?.properties?.top,
+              lastX: val?.properties?.lastX,
+              lastY: val?.properties?.lastY,
               type: val?.type,
-              left: val?.properties?.left,
             };
           }
         })
