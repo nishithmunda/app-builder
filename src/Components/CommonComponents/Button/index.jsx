@@ -4,7 +4,7 @@ export const CustomButton = ({ varient, width, name }) => {
   return (
     <Button
       variant={varient || "outlined"}
-      style={{ width: `${width || 200}px` }}
+      style={{ width: `${width || 200}px`, background: "#FFF" }}
     >
       {name || "Button"}
     </Button>

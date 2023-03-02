@@ -1,11 +1,12 @@
-import { useState, useId, useEffect, useRef } from "react";
+import { useId, useEffect } from "react";
 import { useDrop } from "react-dnd";
 import { componentList } from "../Data/ComponentList";
 import { ElementWrapper } from "../ElementWrapper";
 import { actionTypes } from "../../ContextAPI/reducer";
 import { useStateValue } from "../../ContextAPI/StateProvider";
 import { Dragger } from "../CommonComponents/Draggable";
-import './style.css'
+import { drawGrid } from "./util";
+import "./style.css";
 
 export const EditorCanvas = (props) => {
   const [state, dispatch] = useStateValue();
@@ -58,29 +59,8 @@ export const EditorCanvas = (props) => {
     });
   };
 
-  function drawBoard(p) {
-    let canvasContainer = document.getElementById("canvas_container");
-    let parentHeight = canvasContainer.offsetHeight;
-    let parentWidth = canvasContainer.offsetWidth;
-    let canvas = document.getElementById("canvas");
-    canvas.width = parentWidth - 40;
-    canvas.height = parentHeight - 40;
-    let context = canvas.getContext("2d");
-    for (let x = 0; x <= parentWidth; x += 25) {
-      context.moveTo(0.5 + x + p, p);
-      context.lineTo(0.5 + x + p, parentHeight + p);
-    }
-
-    for (let x = 0; x <= parentHeight; x += 25) {
-      context.moveTo(p, 0.5 + x + p);
-      context.lineTo(parentWidth + p, 0.5 + x + p);
-    }
-    context.strokeStyle = "#e9eff2";
-    context.stroke();
-  }
-
   useEffect(() => {
-    // drawBoard(10);
+    drawGrid(10);
     handleAddFromLocalStorage();
   }, []);
 
@@ -94,7 +74,7 @@ export const EditorCanvas = (props) => {
       </div>
 
       <div id="canvas_container" className="canvas__screen__editor" ref={drop}>
-        {/* <canvas id="canvas"></canvas> */}
+        <canvas id="canvas"></canvas>
         {/* {state?.canvasItems?.length > 0 &&
           state?.canvasItems.map((item) => {
             return (
