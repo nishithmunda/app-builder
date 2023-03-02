@@ -60,7 +60,7 @@ export const EditorCanvas = (props) => {
   };
 
   useEffect(() => {
-    drawGrid(10);
+    // drawGrid(10);
     handleAddFromLocalStorage();
   }, []);
 
@@ -74,7 +74,7 @@ export const EditorCanvas = (props) => {
       </div>
 
       <div id="canvas_container" className="canvas__screen__editor" ref={drop}>
-        <canvas id="canvas"></canvas>
+        {/* <canvas id="canvas"></canvas> */}
         {/* {state?.canvasItems?.length > 0 &&
           state?.canvasItems.map((item) => {
             return (
