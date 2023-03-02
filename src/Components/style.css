@@ -124,10 +124,10 @@ section {
   margin-left: auto;
 }
 
-.element__box:hover > .dnd__icon {
+/* .element__box:hover > .dnd__icon {
   display: flex !important;
   margin-left: auto;
-}
+} */
 
 .delete__icon,
 .dnd__icon {
