@@ -1,4 +1,4 @@
-import Button from "@mui/material/Button";
+import { CustomButton } from "./CommonComponents/Button";
 import Input from "@mui/material/Input";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
@@ -14,12 +14,11 @@ export const componentList = [
     type: "btn_id",
     name: "Button",
     component: (properties) => (
-      <Button
+      <CustomButton
         variant={properties?.varient || "outlined"}
-        style={{ width: '100%' }}
-      >
-        Outlined
-      </Button>
+        width={properties?.width}
+        name={properties?.name}
+      />
     ),
     supportText: "Trigger actions like run queries, export data etc.",
     icon: <SmartButtonIcon />,
@@ -27,7 +26,9 @@ export const componentList = [
   {
     type: "input_id",
     name: "Text Input",
-    component: (properties) => <Input style={{ width: '100%' }}/>,
+    component: (properties) => (
+      <Input style={{ width: `${properties?.width || 200}px` }} />
+    ),
     supportText: "Basic input field",
     icon: <TextFieldsIcon />,
   },
@@ -40,10 +41,6 @@ export const componentList = [
         labelId="demo-simple-select-label"
         id="demo-simple-select"
         label="Age"
-        onClick={(e) => {
-          e.stopPropagation();
-          e.preventDefault();
-        }}
       >
         <MenuItem value={10}>Ten</MenuItem>
         <MenuItem value={20}>Twenty</MenuItem>

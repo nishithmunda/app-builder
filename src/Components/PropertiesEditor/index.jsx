@@ -1,6 +1,7 @@
 import TextField from "@mui/material/TextField";
 import { useStateValue } from "../../ContextAPI/StateProvider";
 import { actionTypes } from "../../ContextAPI/reducer";
+import "./style.css";
 
 export function PropertiesEditor() {
   const [state, dispatch] = useStateValue();
@@ -21,9 +22,11 @@ export function PropertiesEditor() {
     <>
       {state?.activeElement && (
         <div>
-          <h1>Properties</h1>
+          <h1 className="properties__title">Properties</h1>
+          <h2 className="properties__element">{state?.activeElement?.name}</h2>
 
           <TextField
+            style={{ width: "100%" }}
             id="filled-number"
             label="width"
             type="number"
@@ -33,6 +36,19 @@ export function PropertiesEditor() {
             variant="filled"
             onChange={(e) => {
               handleOnChange("width", e.target.value);
+            }}
+          />
+          <TextField
+            style={{ marginTop: "10px", width: "100%" }}
+            id="filled-number"
+            label="name"
+            type="string"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            variant="filled"
+            onChange={(e) => {
+              handleOnChange("name", e.target.value);
             }}
           />
         </div>

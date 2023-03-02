@@ -1,0 +1,16 @@
+.properties__title {
+  text-align: left;
+  font-size: 14px;
+  letter-spacing: 0px;
+  color: #707880;
+  opacity: 1;
+}
+
+.properties__element {
+    text-align: left;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0px;
+  color: #1a1a1a;
+  opacity: 1;
+}

@@ -38,7 +38,6 @@ export const ElementWrapper = ({
       style={{
         top: properties?.top,
         left: properties?.left,
-        width: `${properties?.width}px`
       }}
       onClick={() => handleSelect(item)}
     >
