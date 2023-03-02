@@ -31,6 +31,7 @@
   position: absolute;
   right: 0;
   bottom: -25px;
+  cursor: pointer;
 }
 
 .move__icon {
