@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState,useId, useEffect, useRef } from "react";
 import { useDrop } from "react-dnd";
 import { componentList } from "./data";
 import { ElementWrapper } from "./ElementWrapper";
@@ -7,6 +7,7 @@ import { useStateValue } from "../ContextAPI/StateProvider";
 
 export const EditorCanvas = (props) => {
   const [state, dispatch] = useStateValue();
+  const eleId = useId();
   const [{ isOver }, drop] = useDrop(() => ({
     accept: "abc",
     drop: (item) => handleAddItems(item),
@@ -16,12 +17,17 @@ export const EditorCanvas = (props) => {
   }));
 
   const handleAddItems = (dragItem) => {
+    const time = new Date().valueOf();
     let item = componentList.filter((data) => {
       return data?.type == dragItem?.type;
     });
     dispatch({
       type: actionTypes.ADD_ELEMENT,
-      payload: { ...item?.[0], properties: { varient: "outlined" } },
+      payload: {
+        ...item?.[0],
+        eleId: `${eleId}-${item?.[0]?.type}-${time}`,
+        properties: { varient: "outlined" },
+      },
     });
   };
 
@@ -68,7 +74,7 @@ export const EditorCanvas = (props) => {
   }
 
   useEffect(() => {
-    drawBoard(10, 400, 400);
+    drawBoard(10);
     handleAddFromLocalStorage();
   }, []);
 
@@ -92,6 +98,7 @@ export const EditorCanvas = (props) => {
                   eleId_prop={item?.eleId}
                   childComp={item?.component}
                   properties={item?.properties}
+                  item={item}
                 />
               </>
             );

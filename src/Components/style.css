@@ -63,8 +63,6 @@ section {
   margin-bottom: 40px;
 }
 
-
-
 /* CANVAS SECTION STYLE */
 .canvas__screen {
   font-family: "Figtree", sans-serif;
@@ -113,7 +111,6 @@ section {
   left: 0;
   cursor: pointer;
   padding: 0 18px 0 0;
-
   display: flex;
   align-items: center;
   gap: 5px;
@@ -122,11 +119,17 @@ section {
   border: 1px solid green;
   background-color: rgba(0, 128, 0, 0.116);
 }
-.element__box:hover >.delete__icon {
-display: flex !important;
-margin-left: auto;
+.element__box:hover > .delete__icon {
+  display: flex !important;
+  margin-left: auto;
 }
 
-.delete__icon{
+.element__box:hover > .dnd__icon {
+  display: flex !important;
+  margin-left: auto;
+}
+
+.delete__icon,
+.dnd__icon {
   display: none !important;
 }
