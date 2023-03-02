@@ -1,8 +1,8 @@
-import { CustomButton } from "./CommonComponents/Button";
-import Input from "@mui/material/Input";
-import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
-import { CreateTable } from "./CreateTable";
+import { CustomButton } from "../CommonComponents/Button";
+import { CustomTable } from "../CommonComponents/Table";
+import { CustomInput } from "../CommonComponents/Input";
+import { CustomSelect } from "../CommonComponents/Select";
+
 //ICONS
 import ArrowDropDownCircleIcon from "@mui/icons-material/ArrowDropDownCircle";
 import TextFieldsIcon from "@mui/icons-material/TextFields";
@@ -27,7 +27,7 @@ export const componentList = [
     type: "input_id",
     name: "Text Input",
     component: (properties) => (
-      <Input style={{ width: `${properties?.width || 200}px` }} />
+      <CustomInput width={properties?.width} name={properties?.name} />
     ),
     supportText: "Basic input field",
     icon: <TextFieldsIcon />,
@@ -36,16 +36,7 @@ export const componentList = [
     type: "dropdown_id",
     name: "Dropdown",
     component: (properties) => (
-      <Select
-        style={{ width: properties?.width || 200 }}
-        labelId="demo-simple-select-label"
-        id="demo-simple-select"
-        label="Age"
-      >
-        <MenuItem value={10}>Ten</MenuItem>
-        <MenuItem value={20}>Twenty</MenuItem>
-        <MenuItem value={30}>Thirty</MenuItem>
-      </Select>
+      <CustomSelect width={properties?.width} name={properties?.name} />
     ),
     supportText: "Select from a set of options, with a dropdown.",
     icon: <ArrowDropDownCircleIcon />,
@@ -53,7 +44,7 @@ export const componentList = [
   {
     type: "table_id",
     name: "Table",
-    component: (properties) => <CreateTable />,
+    component: (properties) => <CustomTable />,
     supportText: "Display tabular data with pagination.",
     icon: <GridOnIcon />,
   },

@@ -1,0 +1,44 @@
+
+/* CANVAS SECTION STYLE */
+.canvas__screen {
+    font-family: "Figtree", sans-serif;
+    position: relative;
+    height: 100%;
+    width: 75%;
+  }
+  
+  .canvas__empty__screen {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: 0px;
+    color: #d5dbdd;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .canvas__screen__header {
+    height: 64px;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    box-shadow: 1px 0px 0px #fcfcfc03;
+    border-bottom: 1px solid #e9eff2;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 24px 32px;
+  }
+  .canvas__screen__header > h1 {
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0px;
+    color: #1a1a1a;
+  }
+  .canvas__screen__editor {
+    height: calc(100% - 64px);
+    width: 100%;
+    position: relative;
+  }
+  
+  
