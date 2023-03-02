@@ -14,7 +14,12 @@ export const componentList = [
     type: "btn_id",
     name: "Button",
     component: (properties) => (
-      <Button variant={properties?.varient||'outlined'}>Outlined</Button>
+      <Button
+        variant={properties?.varient || "outlined"}
+        style={{ width: '100%' }}
+      >
+        Outlined
+      </Button>
     ),
     supportText: "Trigger actions like run queries, export data etc.",
     icon: <SmartButtonIcon />,
@@ -22,7 +27,7 @@ export const componentList = [
   {
     type: "input_id",
     name: "Text Input",
-    component: (properties) => <Input />,
+    component: (properties) => <Input style={{ width: '100%' }}/>,
     supportText: "Basic input field",
     icon: <TextFieldsIcon />,
   },
