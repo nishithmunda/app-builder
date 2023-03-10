@@ -1,7 +1,7 @@
 # App-builder
 
 #### Description
-It is a basic demonstaration of no-tool apllication, with drag and drop feature .
+It is a basic demonstaration of no-code apllication, with drag and drop feature .
 
 #### Libraries
 - react-dnd
